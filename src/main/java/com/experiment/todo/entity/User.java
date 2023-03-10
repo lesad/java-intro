@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * User basic entity
@@ -15,6 +16,8 @@ public class User {
   @Id
   @GeneratedValue
   private Long id;
+
+  @NotBlank(message = "Name is mandatory")
   private String name;
 
   public User() {
