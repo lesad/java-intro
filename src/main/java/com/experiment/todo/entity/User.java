@@ -20,11 +20,18 @@ public class User {
   @NotBlank(message = "Name is mandatory")
   private String name;
 
+  private String email;
+
   public User() {
   }
 
-  public User(String name) {
+  public User(String name, String email) {
     this.name = name;
+    this.email = email;
+  }
+
+  public User(String name) {
+    this(name, "");
   }
 
   public Long getId() {
@@ -41,5 +48,13 @@ public class User {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 }

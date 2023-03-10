@@ -20,7 +20,7 @@ public class UserSeeder implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    User user1 = new User("Jack Black");
+    User user1 = new User("Jack Black", "jack.black@gmail.com");
     userRepository.save(user1);
 
     User user2 = new User("John Doe");
