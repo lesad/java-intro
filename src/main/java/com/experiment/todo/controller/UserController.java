@@ -34,6 +34,10 @@ public class UserController {
     return userRepository.findAll();
   }
 
+  public void deleteUser(@PathVariable Long id) {
+    
+  }
+
   @GetMapping("/{id}")
   public User getUserById(@PathVariable Long id) {
     Optional<User> optionalUser = userRepository.findById(id);
