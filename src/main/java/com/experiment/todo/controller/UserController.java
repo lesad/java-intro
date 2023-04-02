@@ -34,14 +34,9 @@ public class UserController {
     return userRepository.findAll();
   }
 
-  public void deleteUser(@PathVariable Long id) {
-    
-  }
-
   @GetMapping("/{id}")
   public User getUserById(@PathVariable Long id) {
-    Optional<User> optionalUser = userRepository.findById(id);
-    return optionalUser.orElseThrow(() -> new ResourceNotFoundException("User not found " + id));
+    return getUserByIdOrThrow(id);
   }
 
   @PostMapping
@@ -51,16 +46,18 @@ public class UserController {
 
   @PatchMapping("/{id}/email")
   public User updateUserEmail(@PathVariable Long id, @RequestParam String email) {
-    Optional<User> optionalUser = userRepository.findById(id);
+    User user = getUserByIdOrThrow(id);
+    user.setEmail(email);
 
+    return userRepository.save(user);
+  }
+
+  private User getUserByIdOrThrow(Long id) {
+    Optional<User> optionalUser = userRepository.findById(id);
     if (optionalUser.isEmpty()) {
       throw new ResourceNotFoundException("User not found " + id);
     }
-
-    User user = optionalUser.get();
-    user.setEmail(email);
-    User updatedUser = userRepository.save(user);
-
-    return updatedUser;
+    return optionalUser.get();
   }
+
 }
