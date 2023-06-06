@@ -29,14 +29,24 @@ public class User {
   @NotBlank(message = "Name is mandatory")
   private String name;
 
+  @NotBlank(message = "Username is mandatory")
+  private String username;
+
+  @NotBlank(message = "Password is mandatory")
+  private String password;
+
   private String email;
 
-  public User(String name) {
+  public User(String name, String username, String password, String email) {
     this.name = name;
+    this.username = username;
+    this.password = password;
+    this.email = email;
   }
 
-  public User(String name, String email) {
+  public User(String name, String username, String password) {
     this.name = name;
-    this.email = email;
+    this.username = username;
+    this.password = password;
   }
 }
