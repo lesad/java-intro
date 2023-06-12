@@ -12,6 +12,7 @@ import com.experiment.todo.exceptions.ResourceNotFoundException;
  * UserRepository
  */
 public interface UserRepository extends JpaRepository<User, Long> {
+  User findByUsername(String username);
 
   @ExceptionHandler(ResourceNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
