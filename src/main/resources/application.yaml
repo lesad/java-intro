@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    # Database Properties
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: pg
+    password: password
+
+  jpa:
+    # Hibernate Properties
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    # Hibernate ddl auto (create, create-drop, validate, update)
+    # Create-drop will drop the database every time the application is started
+    hibernate.ddl-auto: create-drop
+
+# Disable auto-security
+# spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
+
+  security:
+    user:
+      # Security credentials
+      name: admin
+      password: admin
